@@ -19,7 +19,7 @@ This project is an administrative panel built with Angular for managing AI agent
 ## Project Structure
 
 ```
-ai-admin-panel
+judite-admin-panel
 ├── src
 │   ├── app
 │   │   ├── agents
@@ -51,7 +51,7 @@ ai-admin-panel
 1. **Clone the repository**:
    ```
    git clone <repository-url>
-   cd ai-admin-panel
+   cd judite-admin-panel
    ```
 
 2. **Install dependencies**:

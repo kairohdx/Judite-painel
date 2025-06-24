@@ -2,16 +2,16 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ai-admin-panel": {
+    "judite-admin-panel": {
       "projectType": "application",
-      "root": "ai-admin-panel",
+      "root": "judite-admin-panel",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ai-admin-panel",
+            "outputPath": "dist/judite-admin-panel",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -55,11 +55,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ai-admin-panel:build"
+            "browserTarget": "judite-admin-panel:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ai-admin-panel:build:production"
+              "browserTarget": "judite-admin-panel:build:production"
             }
           }
         },
@@ -92,5 +92,8 @@
       }
     }
   },
-  "defaultProject": "ai-admin-panel"
+  "defaultProject": "judite-admin-panel",
+  "cli": {
+    "analytics": false
+  }
 }
