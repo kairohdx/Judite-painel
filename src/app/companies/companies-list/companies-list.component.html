@@ -1,0 +1,32 @@
+<div class="companies-list-container">
+  <div class="header">
+    <h2>Empresas</h2>
+    <button  mat-raised-button type="button" color="primary" routerLink="/empresas/novo">Nova Empresa</button>
+  </div>
+  <mat-table [dataSource]="companies" class="mat-elevation-z2">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let company">{{ company.name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="sector">
+      <mat-header-cell *matHeaderCellDef>Setor</mat-header-cell>
+      <mat-cell *matCellDef="let company">{{ company.sector }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let company">
+        <button mat-icon-button color="accent" [routerLink]="['/usuarios/novo', company.id]" matTooltip="Adicionar Usuário">
+          <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" [routerLink]="['/empresas', company.id, 'edit']" matTooltip="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteCompany(company.id)" matTooltip="Excluir">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

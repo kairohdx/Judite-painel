@@ -12,6 +12,14 @@ import { AppComponent } from './app.component';
 import { AgentsModule } from './agents/agents.module';
 import { CategoriesModule } from './categories/categories.module';
 import { KnowledgeModule } from './knowledge/knowledge.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { UsersModule } from './users/users.module';
+import { CompanyModule } from './companies/company.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { IaModelModule } from './ia-model/ia-model.module';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +37,20 @@ import { KnowledgeModule } from './knowledge/knowledge.module';
     AppRoutingModule,
     AgentsModule,
     CategoriesModule,
-    KnowledgeModule
+    KnowledgeModule,
+    MatToolbarModule,
+    MatIconModule,
+    UsersModule,
+    CompanyModule,
+    IaModelModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

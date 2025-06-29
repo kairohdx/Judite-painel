@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,12 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     MatSelectModule,
     RouterModule.forChild([
       { path: '', component: KnowledgeListComponent },
-      { path: 'new', component: KnowledgeFormComponent },
-      { path: ':id/edit', component: KnowledgeFormComponent }
+      { path: 'novo', component: KnowledgeFormComponent },
+      { path: ':id/editar', component: KnowledgeFormComponent }
     ])
   ]
 })

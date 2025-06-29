@@ -1,0 +1,31 @@
+﻿/* knowledge-list.component.css */
+.knowledge-list-container {
+    /* Estilos do componente */
+    max-width: 900px;
+    margin: 32px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  padding: 12px 8px;
+  word-break: break-word;
+}
+
+mat-header-cell {
+  font-weight: bold;
+  background: #f5f5f5;
+}

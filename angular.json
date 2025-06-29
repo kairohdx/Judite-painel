@@ -4,7 +4,7 @@
   "projects": {
     "judite-admin-panel": {
       "projectType": "application",
-      "root": "judite-admin-panel",
+      "root": "../JUDITE-PAINEL",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -21,6 +21,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []

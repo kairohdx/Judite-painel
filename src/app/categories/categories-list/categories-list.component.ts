@@ -8,7 +8,13 @@ import { Category } from '../../shared/models/category.model';
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements OnInit {
-  categories: Category[] = [];
+  categories: Category[] = [
+    { id: 1, name: 'Entrega' },
+    { id: 2, name: 'Troca' },
+    { id: 3, name: 'Garantia' }
+  ];
+  displayedColumns = ['name', 'actions'];
+  
 
   constructor(private categoryService: CategoryService) {}
 

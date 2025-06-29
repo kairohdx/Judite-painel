@@ -7,6 +7,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatButtonModule,
     MatInputModule,
-    MatDialogModule
-  ],
-  exports: [
-    CategoriesListComponent,
-    CategoryFormComponent
+    MatDialogModule,
+    MatIconModule,
+    RouterModule.forChild([
+      { path: '', component: CategoriesListComponent },
+      { path: 'novo', component: CategoryFormComponent },
+      { path: ':id/editar', component: CategoryFormComponent }
+    ])
   ]
 })
 export class CategoriesModule { }

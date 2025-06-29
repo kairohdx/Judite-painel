@@ -1,0 +1,33 @@
+<div class="model-config-container">
+  <form [formGroup]="modelForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Modelo de IA</mat-label>
+      <mat-select formControlName="model" (selectionChange)="onModelChange($event.value)">
+        <mat-option *ngFor="let m of models" [value]="m.value">{{ m.label }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngFor="let field of dynamicFields">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [formControlName]="field.name" [type]="field.type || 'text'" [required]="field.required">
+      </mat-form-field>
+    </ng-container>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="modelForm.invalid">
+        <mat-icon>save</mat-icon>
+        Salvar
+      </button>
+      <span style="display: flex; align-items: center; gap: 8px;">
+        <button mat-raised-button color="accent" type="button" (click)="testIntegration()" [disabled]="modelForm.invalid || testingIntegration">
+          <mat-icon>play_arrow</mat-icon>
+          Testar Integração
+        </button>
+        <mat-progress-spinner *ngIf="testingIntegration" diameter="24" mode="indeterminate" color="accent" style="display:inline-block"></mat-progress-spinner>
+        <span *ngIf="testResult === true" style="color:green; font-weight:bold;">OK</span>
+        <span *ngIf="testResult === false" style="color:red; font-weight:bold;">Falha</span>
+      </span>
+    </div>
+  </form>
+</div>

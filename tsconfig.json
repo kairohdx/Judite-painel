@@ -17,7 +17,7 @@
     "enableIvy": true
   },
   "include": [
-    "src/**/*.ts"
+    "judite-admin-panel/src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

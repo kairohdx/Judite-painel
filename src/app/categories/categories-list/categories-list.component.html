@@ -1,0 +1,26 @@
+﻿<!-- categories-list.component.html -->
+<div class="categories-list-container">
+  <div class="header">
+    <h2>Categorias</h2>
+    <button  mat-raised-button type="button" color="primary" routerLink="/categorias/novo">Nova Categoria</button>
+  </div>
+  <mat-table [dataSource]="categories" class="mat-elevation-z2">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let category">{{ category.name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let category">
+        <button mat-icon-button color="primary" [routerLink]="['/categorias', category.id, 'edit']">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteCategory(category.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

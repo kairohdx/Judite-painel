@@ -1,0 +1,35 @@
+<div class="company-form-container">
+  <h2>{{ company && company.id ? 'Editar Empresa' : 'Nova Empresa' }}</h2>
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome da Empresa</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Setor</mat-label>
+      <input matInput formControlName="sector" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>CNPJ</mat-label>
+      <input matInput formControlName="cnpj">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="companyForm.invalid">
+        <mat-icon>save</mat-icon>
+        Salvar
+      </button>
+      <button mat-button color="warn" type="button" routerLink="/empresas">
+        <mat-icon>cancel</mat-icon>
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

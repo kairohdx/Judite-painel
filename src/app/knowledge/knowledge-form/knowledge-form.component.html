@@ -1,0 +1,56 @@
+﻿<!-- knowledge-form.component.html -->
+<div class="knowledge-form-container">
+  <h2>{{ knowledge ? 'Editar Conhecimento' : 'Novo Conhecimento' }}</h2>
+  <form [formGroup]="knowledgeForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Agente</mat-label>
+      <mat-select formControlName="agentId" required>
+        <mat-option *ngFor="let agent of agents" [value]="agent.id">
+          {{ agent.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoryId" required>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="contentType" class="full-width" style="margin-bottom: 16px;">
+      <mat-radio-button value="text">Texto manual</mat-radio-button>
+      <mat-radio-button value="url">URL + seletor HTML</mat-radio-button>
+    </mat-radio-group>
+
+    <ng-container [ngSwitch]="knowledgeForm.get('contentType')?.value">
+      <mat-form-field *ngSwitchCase="'text'" appearance="outline" class="full-width">
+        <mat-label>Conteúdo</mat-label>
+        <textarea matInput formControlName="content" rows="5" required></textarea>
+      </mat-form-field>
+
+      <div *ngSwitchCase="'url'" class="url-selector-fields">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>URL</mat-label>
+          <input matInput formControlName="contentUrl" type="url" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Seletor do bloco HTML</mat-label>
+          <input matInput formControlName="contentSelector" placeholder="#meu-bloco" required>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="knowledgeForm.invalid">
+        Salvar
+      </button>
+      <button mat-button color="warn" type="button" routerLink="/conhecimento">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

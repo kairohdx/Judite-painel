@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+  <span class="spacer"></span>
+  <a *ngFor="let link of authContext.toolbarLinks" mat-button [routerLink]="link.route">{{ link.label }}</a>
+  <button *ngIf="authContext.user" mat-raised-button color="warn" (click)="logout()">Sair</button>
+</mat-toolbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

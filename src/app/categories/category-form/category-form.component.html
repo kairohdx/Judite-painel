@@ -1,0 +1,18 @@
+﻿<!-- category-form.component.html -->
+<div class="category-form-container">
+  <h2>{{ category ? 'Editar Categoria' : 'Nova Categoria' }}</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome da Categoria</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+    <div class="actions">
+      <button  mat-raised-button color="primary" type="submit" [disabled]="categoryForm.invalid">
+        Salvar
+      </button>
+      <button mat-button color="warn" type="button" routerLink="/categorias">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

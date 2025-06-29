@@ -1,0 +1,35 @@
+﻿<!-- knowledge-list.component.html -->
+<div class="knowledge-list-container">
+    <div class="header">
+        <h2>Conhecimentos</h2>
+        <button  mat-raised-button type="button" color="primary" routerLink="/conhecimento/novo">Novo Conhecimento</button>
+    </div>
+    <mat-table [dataSource]="knowledgeList" class="mat-elevation-z2">
+        <ng-container matColumnDef="agent">
+            <mat-header-cell *matHeaderCellDef>Agente</mat-header-cell>
+            <mat-cell *matCellDef="let knowledge">{{ knowledge.agentName }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+            <mat-cell *matCellDef="let knowledge">{{ knowledge.categoryName }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="content">
+            <mat-header-cell *matHeaderCellDef>Conteúdo</mat-header-cell>
+            <mat-cell *matCellDef="let knowledge">{{ knowledge.content }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+            <mat-cell *matCellDef="let knowledge">
+                <button mat-icon-button color="primary" [routerLink]="['/conhecimento', knowledge.id, 'edit']"
+                    matTooltip="Editar">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteKnowledge(knowledge.id)" matTooltip="Excluir">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

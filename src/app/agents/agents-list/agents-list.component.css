@@ -1,0 +1,29 @@
+﻿/* agents-list.component.css */
+.agents-list-container {
+  max-width: 800px;
+  margin: 32px auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  padding: 12px 8px;
+}
+
+mat-header-cell {
+  font-weight: bold;
+  background: #f5f5f5;
+}

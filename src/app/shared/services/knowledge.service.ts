@@ -7,7 +7,7 @@ import { Knowledge } from '../models/knowledge.model';
   providedIn: 'root'
 })
 export class KnowledgeService {
-  private apiUrl = 'http://localhost:8000/api/knowledge'; // URL da API FastAPI
+  private apiUrl = 'http://localhost:8000/api/v1/knowledge'; // URL da API FastAPI
 
   constructor(private http: HttpClient) { }
 

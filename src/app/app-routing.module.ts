@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AgentsListComponent } from './agents/agents-list/agents-list.component';
-import { AgentFormComponent } from './agents/agent-form/agent-form.component';
-import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
-import { CategoryFormComponent } from './categories/category-form/category-form.component';
-import { KnowledgeListComponent } from './knowledge/knowledge-list/knowledge-list.component';
-import { KnowledgeFormComponent } from './knowledge/knowledge-form/knowledge-form.component';
+import { LoginComponent } from './login/login.component';
+import { adminGuard } from './shared/guards/admin.guard';
+import { RootGuard } from './shared/guards/root.guard';
 
 const routes: Routes = [
-  { path: 'agentes', component: AgentsListComponent },
-  { path: 'agentes/novo', component: AgentFormComponent },
-  { path: 'categorias', component: CategoriesListComponent },
-  { path: 'categorias/novo', component: CategoryFormComponent },
-  { path: 'conhecimento', component: KnowledgeListComponent },
-  { path: 'conhecimento/novo', component: KnowledgeFormComponent },
-  { path: '', redirectTo: '/agentes', pathMatch: 'full' },
-  { path: '**', redirectTo: '/agentes' }
+  { path: 'usuarios', loadChildren: () => import('./users/users.module').then(m => m.UsersModule), canActivate: [RootGuard] },
+  { path: 'empresas', loadChildren: () => import('./companies/company.module').then(m => m.CompanyModule), canActivate: [RootGuard] },
+  { path: 'categorias', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule), canActivate: [adminGuard] },
+  { path: 'conhecimento', loadChildren: () => import('./knowledge/knowledge.module').then(m => m.KnowledgeModule), canActivate: [adminGuard] },
+  { path: 'agentes', loadChildren: () => import('./agents/agents.module').then(m => m.AgentsModule), canActivate: [adminGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

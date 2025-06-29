@@ -1,0 +1,30 @@
+﻿<!-- agents-list.component.html -->
+<div class="agents-list-container">
+  <div class="header">
+    <h2>Agentes</h2>
+    <button  mat-raised-button type="button" color="primary" routerLink="/agentes/novo">Novo Agente</button>
+  </div>
+  <mat-table [dataSource]="agents" class="mat-elevation-z2">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let agent">{{ agent.name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="sector">
+      <mat-header-cell *matHeaderCellDef>Setor</mat-header-cell>
+      <mat-cell *matCellDef="let agent">{{ agent.sector }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let agent">
+        <button mat-icon-button color="primary" [routerLink]="['/agentes', agent.id, 'edit']">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteAgent(agent.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

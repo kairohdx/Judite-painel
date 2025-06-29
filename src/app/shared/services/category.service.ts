@@ -7,7 +7,7 @@ import { Category } from '../models/category.model';
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:8000/api/categories'; // URL da API FastAPI
+  private apiUrl = 'http://localhost:8000/api/v1/categories'; // URL da API FastAPI
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +23,8 @@ export class CategoryService {
     return this.http.post<Category>(this.apiUrl, category);
   }
 
-  updateCategory(id: number, category: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.apiUrl}/${id}`, category);
+  updateCategory(category: Category): Observable<Category> {
+    return this.http.put<Category>(`${this.apiUrl}/${category.id}`, category);
   }
 
   deleteCategory(id: number): Observable<void> {

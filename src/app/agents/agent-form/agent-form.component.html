@@ -1,0 +1,24 @@
+﻿<!-- agent-form.component.html -->
+<div class="agent-form-container">
+  <h2>{{ agent ? 'Editar Agente' : 'Novo Agente' }}</h2>
+  <form [formGroup]="agentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome da Empresa</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Setor</mat-label>
+      <input matInput formControlName="sector" required>
+    </mat-form-field>
+
+    <div class="actions">
+      <button  mat-raised-button color="primary" type="submit" [disabled]="agentForm.invalid">
+        Salvar
+      </button>
+      <button mat-button color="warn" type="button" routerLink="/agentes">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
